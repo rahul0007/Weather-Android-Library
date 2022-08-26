@@ -38,7 +38,10 @@ val weatherRequestDate = WeatherRequestData(
         
         
 and pass this model in intent to start wather Actvity and return currnt Temperature and WindSpeed in registerForActivityResult
+## get current day weather 
 ```sh
+
+
 private fun getCurrentWeather() {
         val intent = Intent(this, WeatherActivity::class.java)
         val weatherRequestDate = WeatherRequestData(
@@ -51,11 +54,11 @@ private fun getCurrentWeather() {
     }
 ```
 
-##  if you need to get current day weather then add 
-currentWeather = true, 
+total number of day weather list then add
 
-and  if you need to total number of day weather list then add param like this 
+## get total number of day weather list
 ```sh
+
 private fun openActivityForResultLast7Days() {
         val intent = Intent(this, WeatherActivity::class.java)
         val weatherRequestDate = WeatherRequestData(
