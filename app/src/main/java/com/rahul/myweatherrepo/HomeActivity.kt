@@ -13,6 +13,7 @@ import com.weatherapp.model.myWeatherData.CurrentWeatherData
 import com.weatherapp.model.reuestData.WeatherRequestData
 import com.weatherapp.utils.SUCCESS_CURRENT_WEATHER_CODE
 import com.weatherapp.utils.SUCCESS_LAST_7DAYS
+import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,7 +56,11 @@ class HomeActivity : AppCompatActivity() {
                 }
                 SUCCESS_CURRENT_WEATHER_CODE -> {
                     val intent = result.data!!.extras!!.get("WeatherResult") as CurrentWeatherData
-                    Log.e("intent.Temperature", "intent.Temperature" + intent.Temperature);
+                    Log.e("intent.Temperature", "intent.Temperature" + intent.Temperature)
+                    textViewTemperature.text = "Temperature: "+intent.Temperature
+                    textViewWindSpeed.text = "WindSpeed: " +intent.WindSpeed
+                    textViewTemperatureC.text = "TemperatureC: " +intent.TemperatureC
+                    textViewTemperatureF.text = "TemperatureF: " +intent.TemperatureF
                 }
                 SUCCESS_LAST_7DAYS -> {
                     val last7Days =
