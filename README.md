@@ -21,7 +21,7 @@ dependencies {
 	}
 ```
 
-## Usage
+## use
 
 
 Instantiate Model calss With Your Api Key and other parameter  
