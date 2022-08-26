@@ -36,6 +36,18 @@ and pass this model in intent to start wather Actvity and return currnt Temperat
 
 example 
 
+   ** private fun getCurrentWeather() {
+        val intent = Intent(this, WeatherActivity::class.java)
+        val weatherRequestDate = WeatherRequestData(
+            city = "Ahmedabad",
+            currentWeather = true,
+            apiKey = "ae1c4977a943a50eaa7da25e6258d8b2"
+        )
+        intent.putExtra("weatherRequestDate", weatherRequestDate)
+        startForResult.launch(intent)
+    }**
+    
+
 val startForResult =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
             when (result.resultCode) {
