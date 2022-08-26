@@ -1,54 +1,81 @@
-
-
-Weather-Android-Library
+# Weather-Android-Library
+## how to use
 
 You need an API Key to use the OpenWeatherMap API.
 
-Download
+## Download
 
-Step 1. Add the JitPack repository to your root build.gradle file.
+## Step 1. Add the JitPack repository to your root build.gradle file.
 
+```sh
 allprojects {
   repositories {
-  
     maven { url 'https://jitpack.io' }
   }
 }
+```
+ ## Step 2. Add the dependency
+```sh
+dependencies {
+	        implementation 'com.github.rahul0007:Weather-Android-Library:1.0.0'
+	}
+```
 
-Step 2 : Download via Gradle:
+## Usage
 
-implementation 'com.github.rahul0007:Weather-Android-Library:1.0.0'
 
-Usage
+Instantiate Model calss With Your Api Key and other parameter  
 
-Instantiate Model calss With Your Api Key and other parametor  
-
-example
-
+## Example
+```sh
 val weatherRequestDate = WeatherRequestData(
             city = "cityname",
             currentWeather = true,
             apiKey = "apikey"
         )
+```
+
         
         
 and pass this model in intent to start wather Actvity and return currnt Temperature and WindSpeed in registerForActivityResult
-
-example 
-
-   ** private fun getCurrentWeather() {
+```sh
+private fun getCurrentWeather() {
         val intent = Intent(this, WeatherActivity::class.java)
         val weatherRequestDate = WeatherRequestData(
-            city = "Ahmedabad",
+            city = "CityName",
             currentWeather = true,
-            apiKey = "ae1c4977a943a50eaa7da25e6258d8b2"
+            apiKey = "apiKey"
         )
         intent.putExtra("weatherRequestDate", weatherRequestDate)
         startForResult.launch(intent)
-    }**
-    
+    }
+```
 
-val startForResult =
+##  if you need to get current day weather then add 
+currentWeather = true, 
+
+and  if you need to total number of day weather list then add param like this 
+```sh
+private fun openActivityForResultLast7Days() {
+        val intent = Intent(this, WeatherActivity::class.java)
+        val weatherRequestDate = WeatherRequestData(
+            city = "CityName",
+            currentWeather = false,
+            apiKey = "apiKey",
+            lat = "37",
+            log = "137",
+            totalDays = "7"
+        )
+        intent.putExtra("weatherRequestDate", weatherRequestDate)
+        startForResult.launch(intent)
+    }
+```
+ 
+ ## you can get result inside of registerForActivityResult
+ 
+
+```sh
+ val startForResult =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
             when (result.resultCode) {
                 Activity.RESULT_OK -> {
@@ -68,4 +95,7 @@ val startForResult =
                 }
             }
         }
+```
+**RS**
+
 
